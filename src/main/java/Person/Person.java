@@ -9,16 +9,23 @@ public abstract class Person {
     private String name;
     private int age;
     private String gender;
-    private ArrayList<String> favouriteFoods;
+    private ArrayList<Cheese> favouriteCheeses;
 
-    public Person(String inputName, int inputAge, String inputGender, ArrayList<String> favouriteFoods){
+    public Person(String inputName, int inputAge, String inputGender, ArrayList<Cheese> favouriteCheeses){
         this.name = inputName;
         this.age = inputAge;
         this.gender = inputGender;
-        this.favouriteFoods = favouriteFoods;
+        this.favouriteCheeses = favouriteCheeses;
     }
 
-    public abstract String eatCheese(Cheese cheeseName);
+    public String eatCheese(Cheese cheeseName){
+        if (this.likesCheese(cheeseName)){
+            return "Nom nom";
+        }
+        else {
+            return "Not for me";
+        }
+    }
 
     public String getName() {
         return this.name;
@@ -45,14 +52,15 @@ public abstract class Person {
     }
 
     public int countFavFoods() {
-        return this.favouriteFoods.size();
+        return this.favouriteCheeses.size();
     }
 
-    public void addFoodToFavs(String food) {
-        this.favouriteFoods.add(food);
+    public void addFoodToFavs(Cheese cheese) {
+        this.favouriteCheeses.add(cheese);
     }
 
-    public boolean likesFood(String food){
-        return this.favouriteFoods.contains(food);
+    public boolean likesCheese(Cheese cheese){
+        return this.favouriteCheeses.contains(cheese);
     }
+
 }
